@@ -19,6 +19,7 @@ const quoteChars: Record<SupportedDbtAdapter, string> = {
     postgres: `"`,
     duckdb: `"`,
     trino: `"`,
+    starrocks: '`',
     clickhouse: `"`,
     athena: `"`,
 };

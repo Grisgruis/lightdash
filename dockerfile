@@ -78,6 +78,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     "dbt-snowflake~=1.6.0" \
     "dbt-bigquery~=1.6.0" \
     "dbt-databricks~=1.6.0" \
+    "dbt-starrocks~=1.6.0" \
     "dbt-trino==1.6.0" \
     "dbt-clickhouse~=1.6.0" \
     "psycopg2-binary==2.9.6"\
@@ -89,6 +90,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     "dbt-snowflake~=1.7.0" \
     "dbt-bigquery~=1.7.0" \
     "dbt-databricks~=1.7.0" \
+    "dbt-starrocks~=1.7.0" \
     "dbt-trino==1.7.0" \
     "dbt-clickhouse~=1.7.0" \
     "psycopg2-binary==2.9.6" \
@@ -114,6 +116,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     "dbt-snowflake~=1.9.0" \
     "dbt-bigquery~=1.9.0" \
     "dbt-databricks~=1.9.0" \
+    "dbt-starrocks~=1.9.0" \
     "dbt-trino~=1.9.0" \
     "dbt-clickhouse~=1.9.0" \
     "dbt-athena~=1.9.0" \
@@ -127,6 +130,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     "dbt-snowflake~=1.10.0" \
     "dbt-bigquery~=1.10.0" \
     "dbt-databricks~=1.10.0" \
+    "dbt-starrocks~=1.10.0" \
     "dbt-trino~=1.10.0" \
     "dbt-clickhouse~=1.9.0" \
     "dbt-athena~=1.10.0" \
@@ -140,6 +144,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     "dbt-snowflake~=1.11.0" \
     "dbt-bigquery~=1.11.0" \
     "dbt-databricks~=1.11.0" \
+    "dbt-starrocks~=1.11.0" \
     "dbt-trino~=1.10.0" \
     "dbt-clickhouse~=1.9.0" \
     "dbt-athena~=1.10.0" \

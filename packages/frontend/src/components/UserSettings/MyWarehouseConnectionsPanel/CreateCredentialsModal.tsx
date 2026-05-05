@@ -49,6 +49,11 @@ const defaultCredentials: Record<
         user: '',
         password: '',
     },
+    [WarehouseTypes.STARROCKS]: {
+        type: WarehouseTypes.STARROCKS,
+        user: 'root',
+        password: '',
+    },
     [WarehouseTypes.BIGQUERY]: {
         type: WarehouseTypes.BIGQUERY,
         keyfileContents: {},

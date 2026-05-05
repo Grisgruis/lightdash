@@ -13,6 +13,7 @@ import type {
     CreatePostgresCredentials,
     CreateRedshiftCredentials,
     CreateSnowflakeCredentials,
+    CreateStarrocksCredentials,
     CreateTrinoCredentials,
 } from '@lightdash/common';
 
@@ -176,6 +177,18 @@ const DuckdbDefaultValues: CreateDuckdbCredentials = {
     startOfWeek: undefined,
 };
 
+export const StarrocksDefaultValues: CreateStarrocksCredentials = {
+    type: WarehouseTypes.STARROCKS,
+    schema: '',
+    host: '',
+    user: '',
+    password: '',
+    requireUserCredentials: false,
+    port: 9030,
+    catalog: '',
+    startOfWeek: undefined,
+};
+
 export const warehouseDefaultValues = {
     [WarehouseTypes.BIGQUERY]: BigQueryDefaultValues,
     [WarehouseTypes.POSTGRES]: PostgresDefaultValues,
@@ -183,6 +196,7 @@ export const warehouseDefaultValues = {
     [WarehouseTypes.SNOWFLAKE]: SnowflakeDefaultValues,
     [WarehouseTypes.DATABRICKS]: DatabricksDefaultValues,
     [WarehouseTypes.TRINO]: TrinoDefaultValues,
+    [WarehouseTypes.STARROCKS]: StarrocksDefaultValues,
     [WarehouseTypes.CLICKHOUSE]: ClickhouseDefaultValues,
     [WarehouseTypes.ATHENA]: AthenaDefaultValues,
     [WarehouseTypes.DUCKDB]: DuckdbDefaultValues,

@@ -28,6 +28,7 @@ import { DuckdbSchemaInput } from './WarehouseForms/DuckdbForm';
 import { PostgresSchemaInput } from './WarehouseForms/PostgresForm';
 import { RedshiftSchemaInput } from './WarehouseForms/RedshiftForm';
 import { SnowflakeSchemaInput } from './WarehouseForms/SnowflakeForm';
+import { StarrocksSchemaInput } from './WarehouseForms/StarrocksForm';
 import { TrinoSchemaInput } from './WarehouseForms/TrinoForm';
 
 interface DbtSettingsFormProps {
@@ -139,6 +140,8 @@ const DbtSettingsForm: FC<DbtSettingsFormProps> = ({
                 return PostgresSchemaInput;
             case WarehouseTypes.TRINO:
                 return TrinoSchemaInput;
+            case WarehouseTypes.STARROCKS:
+                return StarrocksSchemaInput;
             case WarehouseTypes.REDSHIFT:
                 return RedshiftSchemaInput;
             case WarehouseTypes.SNOWFLAKE:

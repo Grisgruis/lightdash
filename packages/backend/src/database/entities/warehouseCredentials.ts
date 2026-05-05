@@ -9,6 +9,7 @@ export const warehouseTypes = [
     'postgres',
     'databricks',
     'trino',
+    'starrocks',
     'clickhouse',
     'athena',
     'duckdb',

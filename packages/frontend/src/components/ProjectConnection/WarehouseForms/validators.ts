@@ -60,6 +60,11 @@ export const warehouseValueValidators: Record<
         host: hasNoWhiteSpaces('Host'),
         user: hasNoWhiteSpaces('User'),
     },
+    [WarehouseTypes.STARROCKS]: {
+        schema: hasNoWhiteSpaces('Schema'),
+        host: hasNoWhiteSpaces('Host'),
+        user: hasNoWhiteSpaces('User'),
+    },
     [WarehouseTypes.ATHENA]: {
         region: hasNoWhiteSpaces('Region'),
         database: hasNoWhiteSpaces('Catalog'),

@@ -25,9 +25,15 @@ export enum WarehouseTypes {
     SNOWFLAKE = 'snowflake',
     DATABRICKS = 'databricks',
     TRINO = 'trino',
+    STARROCKS = 'starrocks',
     CLICKHOUSE = 'clickhouse',
     ATHENA = 'athena',
     DUCKDB = 'duckdb',
+}
+
+export enum SemanticLayerType {
+    DBT = 'DBT',
+    CUBE = 'CUBE',
 }
 
 export type SshTunnelConfiguration = {
@@ -173,6 +179,23 @@ export type TrinoCredentials = Omit<
     CreateTrinoCredentials,
     SensitiveCredentialsFieldNames
 >;
+
+export type CreateStarrocksCredentials = {
+    type: WarehouseTypes.STARROCKS;
+    host: string;
+    user: string;
+    password?: string;
+    requireUserCredentials?: boolean;
+    port: number;
+    schema: string;
+    catalog?: string;
+    startOfWeek?: WeekDay | null;
+    dataTimezone?: string;
+};
+export type StarrocksCredentials = Omit<
+    CreateStarrocksCredentials,
+    SensitiveCredentialsFieldNames
+>;
 export type CreateClickhouseCredentials = {
     type: WarehouseTypes.CLICKHOUSE;
     host: string;
@@ -300,6 +323,7 @@ export type CreateWarehouseCredentials =
     | CreateSnowflakeCredentials
     | CreateDatabricksCredentials
     | CreateTrinoCredentials
+    | CreateStarrocksCredentials
     | CreateClickhouseCredentials
     | CreateAthenaCredentials
     | CreateDuckdbCredentials;
@@ -310,6 +334,7 @@ export type WarehouseCredentials =
     | BigqueryCredentials
     | DatabricksCredentials
     | TrinoCredentials
+    | StarrocksCredentials
     | ClickhouseCredentials
     | AthenaCredentials
     | DuckdbCredentials;

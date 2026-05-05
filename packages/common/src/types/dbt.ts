@@ -37,6 +37,7 @@ export enum SupportedDbtAdapter {
     POSTGRES = 'postgres',
     DUCKDB = 'duckdb',
     TRINO = 'trino',
+    STARROCKS = 'starrocks',
     CLICKHOUSE = 'clickhouse',
     ATHENA = 'athena',
 }
@@ -304,6 +305,8 @@ export const normaliseModelDatabase = (
                 );
             }
             return { ...model, database: model.database as string };
+        case SupportedDbtAdapter.STARROCKS:
+            return { ...model, database: model.schema };
         case SupportedDbtAdapter.CLICKHOUSE:
             return { ...model, database: '' }; // Clickhouse doesn't have a database field
         case SupportedDbtAdapter.DATABRICKS:

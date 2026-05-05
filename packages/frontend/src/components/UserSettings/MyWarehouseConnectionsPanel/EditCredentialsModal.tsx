@@ -22,6 +22,7 @@ const getCredentialsWithPlaceholders = (
         case WarehouseTypes.SNOWFLAKE:
         case WarehouseTypes.POSTGRES:
         case WarehouseTypes.TRINO:
+        case WarehouseTypes.STARROCKS:
             return {
                 ...credentials,
                 password: '',

@@ -38,6 +38,8 @@ export const mapAdapterToFormulaDialect = (
             return 'athena';
         case SupportedDbtAdapter.TRINO:
             return 'trino';
+        case SupportedDbtAdapter.STARROCKS:
+            throw new Error('Formula compilation is not supported on StarRocks');
         default:
             return assertUnreachable(adapter, `Unknown adapter: ${adapter}`);
     }

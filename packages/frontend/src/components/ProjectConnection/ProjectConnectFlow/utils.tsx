@@ -12,6 +12,7 @@ import PostgressLogo from './Assets/postgresql.svg';
 import Redshift from './Assets/redshift.svg';
 import Snowflake from './Assets/snowflake.svg';
 import Trino from './Assets/trino.svg';
+import Starrocks from './Assets/starrocks.svg';
 import {
     OtherWarehouse,
     type SelectedWarehouse,
@@ -54,6 +55,12 @@ export const WarehouseTypeLabels: WarehouseLabel[] = [
         key: WarehouseTypes.SNOWFLAKE,
         iconType: 'image',
         image: Snowflake,
+    },
+    {
+        label: 'Starrocks',
+        key: WarehouseTypes.STARROCKS,
+        iconType: 'image',
+        image: Starrocks,
     },
     {
         label: 'ClickHouse',

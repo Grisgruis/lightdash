@@ -12,6 +12,7 @@ import {
     type CreateRedshiftCredentials,
     type CreateSnowflakeCredentials,
     type CreateTrinoCredentials,
+    type CreateStarrocksCredentials,
     type ProjectType,
 } from './projects';
 
@@ -32,6 +33,7 @@ export type UserWarehouseCredentials = {
               | CreateRedshiftCredentials
               | CreatePostgresCredentials
               | CreateSnowflakeCredentials
+              | CreateStarrocksCredentials
               | CreateTrinoCredentials
               | CreateClickhouseCredentials,
               'type' | 'user'
@@ -80,6 +82,7 @@ export type UserWarehouseCredentialsWithSecrets = Pick<
                       | 'oauthClientId'
                   >
               >)
+        | Pick<CreateStarrocksCredentials, 'type' | 'user' | 'password'>
         | Pick<
               CreateAthenaCredentials,
               'type' | 'accessKeyId' | 'secretAccessKey'

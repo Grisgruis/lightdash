@@ -19,6 +19,7 @@ export const getFieldQuoteChar = (
         switch (warehouseType) {
             case WarehouseTypes.BIGQUERY:
             case WarehouseTypes.DATABRICKS:
+            case WarehouseTypes.STARROCKS:
                 return '`';
             case WarehouseTypes.SNOWFLAKE:
             case WarehouseTypes.REDSHIFT:
@@ -51,6 +52,7 @@ export const getAggregatedField = (
         case SupportedDbtAdapter.SNOWFLAKE:
         case SupportedDbtAdapter.REDSHIFT:
         case SupportedDbtAdapter.TRINO:
+        case SupportedDbtAdapter.STARROCKS:
         case SupportedDbtAdapter.ATHENA:
         case SupportedDbtAdapter.DUCKDB:
             const aggregationFunction =

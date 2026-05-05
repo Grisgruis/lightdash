@@ -150,6 +150,23 @@ const credentialsTarget = (
                     [envVar('password')]: credentials.password,
                 },
             };
+        case WarehouseTypes.STARROCKS:
+            return {
+                target: {
+                    type: credentials.type,
+                    host: credentials.host,
+                    method: 'ldap',
+                    user: envVarReference('user'),
+                    password: envVarReference('password'),
+                    port: credentials.port,
+                    schema: credentials.schema,
+                    catalog: credentials.catalog
+                },
+                environment: {
+                    [envVar('user')]: credentials.user,
+                    [envVar('password')]: credentials.password || '',
+                },
+            };
         case WarehouseTypes.SNOWFLAKE: {
             const result: CredentialsTarget = {
                 target: {

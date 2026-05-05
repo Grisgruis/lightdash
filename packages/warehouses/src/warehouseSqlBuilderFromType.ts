@@ -10,6 +10,7 @@ import { DuckdbSqlBuilder } from './warehouseClients/DuckdbWarehouseClient';
 import { PostgresSqlBuilder } from './warehouseClients/PostgresWarehouseClient';
 import { RedshiftSqlBuilder } from './warehouseClients/RedshiftWarehouseClient';
 import { SnowflakeSqlBuilder } from './warehouseClients/SnowflakeWarehouseClient';
+import { StarrocksSqlBuilder } from './warehouseClients/StarrocksWarehouseClient';
 import { TrinoSqlBuilder } from './warehouseClients/TrinoWarehouseClient';
 import WarehouseBaseSqlBuilder from './warehouseClients/WarehouseBaseSqlBuilder';
 
@@ -44,6 +45,8 @@ export const warehouseSqlBuilderFromType = (
             return new TrinoSqlBuilder(...args);
         case SupportedDbtAdapter.ATHENA:
             return new AthenaSqlBuilder(...args);
+        case SupportedDbtAdapter.STARROCKS:
+            return new StarrocksSqlBuilder(...args);
         default:
             const never: never = adapterType;
             throw new Error(`Unsupported adapter type: ${adapterType}`);

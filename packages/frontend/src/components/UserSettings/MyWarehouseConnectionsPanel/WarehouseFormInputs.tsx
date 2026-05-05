@@ -93,6 +93,7 @@ export const WarehouseFormInputs: FC<{
         case WarehouseTypes.REDSHIFT:
         case WarehouseTypes.POSTGRES:
         case WarehouseTypes.TRINO:
+        case WarehouseTypes.STARROCKS:
         case WarehouseTypes.CLICKHOUSE:
             return (
                 <>

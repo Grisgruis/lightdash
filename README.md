@@ -40,6 +40,48 @@ Come join the team, [we're hiring](https://lightdash.notion.site/Lightdash-Job-B
 
 </div>
 
+## About this fork
+
+This is a [Weeztix](https://www.weeztix.com) fork of [lightdash/lightdash](https://github.com/lightdash/lightdash) that adds a **StarRocks** warehouse connector.
+
+### Credit
+
+The original StarRocks connector work was done by [Honza Stepanovsky](https://github.com/hhhonzik) in his fork at [hhhonzik/lightdash](https://github.com/hhhonzik/lightdash) (he is also listed in the contributors below). This fork builds on his implementation. Many thanks for the upstream work.
+
+### Branch strategy
+
+We maintain this fork with a deliberately minimal divergence from upstream so the StarRocks connector stays easy to merge and forward-port:
+
+- **`main`** — kept in sync with [`lightdash/lightdash`](https://github.com/lightdash/lightdash) `main`. No fork-specific changes live here.
+- **`Feature/starrocks-connector`** — a single squashed commit on top of `main` containing all StarRocks-related changes. This branch is always rebased on top of the latest `main`, so it is always ready to be merged or used as a patch.
+
+Workflow:
+
+```bash
+# 1. Pull upstream changes into our main
+git fetch upstream
+git checkout main
+git merge --ff-only upstream/main
+git push origin main
+
+# 2. Rebase the StarRocks branch on top
+git checkout Feature/starrocks-connector
+git rebase main
+# ...resolve any conflicts (see notes below), then:
+pnpm test                          # MUST be green before pushing
+git push --force-with-lease origin Feature/starrocks-connector
+```
+
+**Resolving rebase conflicts.** When upstream changes touch files that StarRocks also modifies (warehouse adapter maps, generated TSOA output, etc.), the rebase will stop with conflicts. Use [Claude Code](https://claude.com/claude-code) — or your favourite flavour of Vibe Magic ✨ — to walk through them. Typical patterns to expect:
+
+- **Generated files** (`packages/backend/src/generated/routes.ts`, `swagger.json`): take main's version (`git checkout --ours <file>`) and regenerate after the rebase with `pnpm generate-api`.
+- **Exhaustive `Record<SupportedDbtAdapter, ...>` maps**: upstream often adds new entries; you'll need to add a `STARROCKS` case to keep TypeScript happy.
+- **`pnpm-lock.yaml`**: regenerate with `pnpm install` rather than hand-merging.
+
+**Always run `pnpm test` before committing the rebased commit and pushing.** A green rebase that compiles is not enough — the test suite must pass. If anything fails, fix it inside the same squashed commit (`git commit --amend`) so the branch stays a single clean diff.
+
+We deliberately do **not** keep merge commits or multiple feature commits on this branch — the goal is one clean diff against upstream `main` at all times.
+
 ## Features:
 
 - [x] 🙏 Familiar interface for your users to self-serve using pre-defined metrics

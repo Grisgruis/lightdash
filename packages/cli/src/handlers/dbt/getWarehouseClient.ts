@@ -184,6 +184,16 @@ function getMockCredentials(
                 schema: '',
                 http_scheme: '',
             };
+        case SupportedDbtAdapter.STARROCKS:
+            return {
+                type: WarehouseTypes.STARROCKS,
+                host: '',
+                schema: '',
+                user: '',
+                catalog: '',
+                password: '',
+                port: 9030,
+            };
         case SupportedDbtAdapter.CLICKHOUSE:
             return {
                 type: WarehouseTypes.CLICKHOUSE,
